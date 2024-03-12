@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="html-form-css.css">
+    <title>Registration Form</title>
+    <style>
+      .hidden{
+        display:none;
+      }
+    </style>
+</head>
+<body>
+<div class="container">
+<form id="registrationForm" action="submit.php" method="post">
+  <label for="name">Name:</label><br>
+  <input type="text" id="name" name="name" required><br>
+
+  <label for="mobile">Mobile Number:</label><br>
+  <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required><br>
+
+  <label for="email">Email ID:</label><br>
+  <input type="email" id="email" name="email" required><br>
+
+  <label for="college">College:</label><br>
+  <input type="text" id="college" name="college" required><br>
+
+  <label for="year">Year of Study:</label><br>
+  <select id="year" name="year">
+    <option value="1">1st Year</option>
+    <option value="2">2nd Year</option>
+    <option value="3">3rd Year</option>
+    <option value="4">4th Year</option>
+    
+  </select><br>
+
+
+  <p>Dietary Preference:</p>
+  <input type="radio" id="vegetarian" name="food" value="Vegetarian">
+  <label for="vegetarian">Vegetarian</label><br>
+  <input type="radio" id="nonVegetarian" name="food" value="Non-Vegetarian">
+  <label for="nonVegetarian">Non-Vegetarian</label><br><br>
+
+  <p>Technical Team Events:</p>
+  <input type="radio" id="paperPresentation" name="technicalTeamEvent" value="PaperPresentation">
+  <label for="paperPresentation">Paper Presentation</label><br>
+  <input type="radio" id="projectPresentation" name="technicalTeamEvent" value="ProjectPresentation">
+  <label for="projectPresentation">Project Presentation</label><br>
+  <input type="radio" id="null" name="technicalTeamEvent" value="null">
+  <label for="null">None</label><br>
+  <br>
+
+  <p class="highlight-glow">If you are not participating in any of the paper-presentation / project-presentation please don't fill below team details.</p>
+  <p class="highlight-glow">Solo participation is only for project-presentation,not for paper-presentation.</p>
+  <div class="paper-presentation" id="paperdetails">
+  <h4>Team Details - Paper-Presentation / Project-Presentation</h4>
+   <!-- Team Name -->
+   <label for="teamName">Team Name:</label><br>
+   <input type="text" id="teamName" name="teamName" required><br>
+ 
+   <!-- Team Members -->
+   <label for="teamMembers">Team Members:</label><br>
+   <select id="teamMembers" name="teamMembers">
+    <option value="1">1</option>
+     <option value="2">2</option>
+     <option value="3">3</option>
+     <option value="null" selected>None</option>
+   </select><br><br>
+   <label for="teamMembers">Team Members:</label><br>
+  <input type="text" id="member1" name="teamMember1" placeholder="Team Member 1"><br>
+  <input type="text" id="member2" name="teamMember2" placeholder="Team Member 2"><br>
+  <input type="text" id="member3" name="teamMember3" placeholder="Team Member 3"><br><br>
+  <label for="projectTitle">Paper or Project - Title:</label><br>
+  <input type="text" id="projectTitle" name="projectTitle" required><br><br>
+ 
+   <!-- Mail Abstract -->
+   <p>To mail the abstract, click the button below:</p>
+   <div class="mail-button-container">
+   <button onclick="mailAbstract()">Mail Abstract</button><br><br>
+ </div>
+  <script>
+    function mailAbstract() {
+      var teamName = document.getElementById("teamName").value;
+      var teamMembers = document.getElementById("teamMembers").value;
+      var paperTitle = document.getElementById("paperTitle").value;
+      var subject = "Abstract Submission - " + paperTitle;
+      var body = "Team Name: " + teamName + "%0D%0A";
+      body += "Team Members: " + teamMembers + "%0D%0A";
+      body += "Paper Title: " + paperTitle + "%0D%0A";
+      var mailtoLink = "mailto:gusto2k24paper@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+      window.location.href = mailtoLink;
+    }
+  </script>
+  </div>
+
+<p class="highlight-glow">
+  If you have chosen Paper Presentation, please select either Hunt Mod or Code Debugging from these two events, and you can choose the remaining events if you are interested.</p>
+<p class="highlight-glow">If you have choosen project presentation, please only choose tech quiz and blind coding if your are interested.</p>
+
+  <p>Technical Individual Events:</p>
+  <input type="checkbox" id="techIndividual1" name="i" value="TechnicalQuiz">
+  <label for="techIndividual1">Technical Quiz</label><br>
+  <input type="checkbox" id="techIndividual2" name="technicalIndividualEvent2" value="CodeDebugging">
+  <label for="techIndividual2">Code Debugging</label><br>
+  <input type="checkbox" id="techIndividual3" name="technicalIndividualEvent3" value="HuntMods">
+  <label for="techIndividual3">Hunt Mods</label><br>
+  <input type="checkbox" id="techIndividual4" name="technicalIndividualEvent4" value="BlindCoding">
+  <label for="techIndividual4">Blind Coding</label><br><br>
+  <p>Non-Technical Individual Events:</p>
+  <input type="checkbox" id="nonTechIndividual1" name="nonTechnicalIndividualEvent1" value="LockTheLogo">
+  <label for="nonTechIndividual1">Lock the Logo</label><br>
+  <input type="checkbox" id="nonTechIndividual2" name="nonTechnicalIndividualEvent2" value="Connections">
+  <label for="nonTechIndividual2">Connections</label><br>
+  <input type="checkbox" id="nonTechIndividual3" name="nonTechnicalIndividualEvent3" value="PosterPlague">
+  <label for="nonTechIndividual3">Poster Plague</label><br>
+  <input type="checkbox" id="nonTechIndividual4" name="nonTechnicalIndividualEvent4" value="MemeMaster">
+  <label for="nonTechIndividual4">Meme Master</label><br>
+
+  <div class="payment-details">
+    <p>Payment Details:</p>
+    <p>Registration Fees: ₹150 per head</p>
+  </div>
+  <div class="google-form">
+   <!-- Transaction ID -->
+  <label for="transactionID">Transaction ID:</label><br>
+  <input type="text" id="transactionID" name="transactionID" required><br><br>
+  </div>
+
+ 
+  <input class="submit" type="submit" value="Submit">
+  <button class ="clear" type="button" onclick="clearForm()">Clear Form</button> <!-- Clear Form Button -->
+
+  <!-- Add JavaScript to clear form -->
+
+  <script>
+    function clearForm() {
+      document.getElementById("registrationForm").reset(); // Reset form
+    }
+  </script>
+
+
+</form>
+</div>
+<p>Please fill the Google Form after payment and submission of this form.</p>
+
+  <p>Link to the google form here</p>
+
+  <div class="contact-us">
+    <p>For further queries in registration, please contact us:</p>
+    <p>Email: abc@example.com</p>
+    <p>Phone: +91 8902325887</p>
+  </div>
+
+</body>
+</html>
+
+</body>
+</html>
